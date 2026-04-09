@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Revolio
 
-## Getting Started
+A minimal, slick container manager to control, monitor and orchestrate your Docker containers effortlessly.
 
-First, run the development server:
+## What It Does
+
+- Shows running containers
+- Shows live CPU, memory, and network usage
+- Updates the dashboard every 5 seconds
+- Uses Docker socket fallback for Linux/macOS paths
+
+## Requirements
+
+- Node.js `>=20.9.0`
+- npm
+- Docker Desktop (or Docker Engine) running
+
+## Install
+
+```bash
+npm install
+```
+
+## Run (Development)
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Dashboard: [http://localhost:6969](http://localhost:6969)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Run (Production)
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `GET /api/containers`  
+  Lists running containers.
+- `GET /api/usage`  
+  Returns running containers with CPU, memory, and network usage snapshot.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Docker Socket Behavior
 
-## Deploy on Vercel
+No `.env` is required by default.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Revolio tries:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. `/var/run/docker.sock`
+2. `~/.docker/run/docker.sock` (macOS fallback)
+
+If you see an `ENOENT` socket error, make sure Docker is running.
+
+## Useful Scripts
+
+```bash
+npm run lint
+npm run format
+```
