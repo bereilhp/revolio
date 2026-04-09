@@ -1,3 +1,5 @@
+import UsageDashboard from "../components/usage-dashboard";
+
 export default function Home() {
-  return <div>Hello World</div>;
+  return <UsageDashboard />;
 }

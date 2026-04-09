@@ -1,0 +1,49 @@
+.main {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 24px;
+}
+
+.title {
+  font-size: 28px;
+  margin: 0;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 8px;
+}
+
+.error {
+  color: #b00020;
+  margin-top: 16px;
+}
+
+.status {
+  margin-top: 16px;
+}
+
+.table {
+  border-collapse: collapse;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.headerCell {
+  text-align: left;
+}
+
+.nameCell {
+  padding: 10px 0;
+}
+
+.image {
+  color: #777;
+  font-size: 13px;
+}
+
+.updatedAt {
+  color: #666;
+  font-size: 13px;
+  margin-top: 16px;
+}
